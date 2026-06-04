@@ -1,104 +1,86 @@
 export default function GlobalMap() {
+    const bars = [42, 56, 48, 70, 64, 86, 78, 96, 88, 104];
+    const stockGroups = [
+        ["Fast moving", "42 items", "text-emerald-200"],
+        ["Low stock", "18 items", "text-amber-200"],
+        ["Slow moving", "11 items", "text-violet-200"],
+    ];
+
     return (
-        <div className="relative w-full h-full px-0">
-            <svg
-                className="h-full w-full"
-                viewBox="0 0 900 520"
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="xMidYMid meet"
-            >
-                <defs>
-                    <filter id="glowCyan" x="-50%" y="-50%" width="200%" height="200%">
-                        <feGaussianBlur stdDeviation="4" result="blur" />
-                        <feMerge>
-                            <feMergeNode in="blur" />
-                            <feMergeNode in="SourceGraphic" />
-                        </feMerge>
-                    </filter>
+        <div className="relative h-full w-full">
+            <div className="panel absolute inset-x-0 top-0 mx-auto w-full max-w-[760px] rounded-lg p-5 shadow-[0_24px_90px_rgba(0,0,0,0.38)] md:top-6">
+                <div className="flex flex-wrap items-center justify-between gap-4 border-b border-cyan-400/10 pb-4">
+                    <div>
+                        <p className="text-xs uppercase tracking-[0.18em] text-cyan-100/40">
+                            Live Inventory Command Center
+                        </p>
+                        <h2 className="mt-2 text-2xl font-bold text-white">
+                            Weekly Retail Forecast
+                        </h2>
+                    </div>
+                    <div className="rounded-lg border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-sm font-semibold text-emerald-200">
+                        System healthy
+                    </div>
+                </div>
 
-                    <pattern
-                        id="dotPattern"
-                        x="0"
-                        y="0"
-                        width="12"
-                        height="12"
-                        patternUnits="userSpaceOnUse"
-                    >
-                        <circle cx="2" cy="2" r="1.45" fill="rgba(110,255,245,0.18)" />
-                    </pattern>
+                <div className="mt-5 grid gap-4 md:grid-cols-[1.1fr_0.9fr]">
+                    <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
+                        <div className="flex items-center justify-between">
+                            <div>
+                                <p className="text-sm text-cyan-50/45">Demand trend</p>
+                                <p className="mt-1 text-3xl font-black text-cyan-200">+18.4%</p>
+                            </div>
+                            <span className="rounded-lg bg-cyan-400/10 px-3 py-1 text-xs text-cyan-200">
+                                Next 7 days
+                            </span>
+                        </div>
 
-                    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#ffd84d" />
-                        <stop offset="100%" stopColor="#ffe97f" />
-                    </linearGradient>
-                </defs>
+                        <div className="mt-6 flex h-32 items-end gap-2">
+                            {bars.map((height, index) => (
+                                <div
+                                    key={index}
+                                    className="chart-bar flex-1 rounded-t-lg bg-gradient-to-t from-cyan-500/40 to-cyan-200"
+                                    style={{
+                                        height: `${height}%`,
+                                        animationDelay: `${index * 80}ms`,
+                                    }}
+                                />
+                            ))}
+                        </div>
+                    </div>
 
-                <circle cx="650" cy="150" r="170" fill="rgba(0,255,231,0.08)" />
-                <circle cx="720" cy="340" r="190" fill="rgba(0,255,231,0.06)" />
+                    <div className="grid gap-4">
+                        <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
+                            <p className="text-sm text-cyan-50/45">Recommended bundle</p>
+                            <div className="mt-3 flex items-center justify-between gap-3">
+                                <div>
+                                    <p className="text-lg font-bold text-white">Bread + Jam</p>
+                                    <p className="text-sm text-cyan-50/45">Lift 2.5x, confidence 31%</p>
+                                </div>
+                                <span className="rounded-lg bg-violet-400/10 px-3 py-2 text-sm font-bold text-violet-200">
+                                    MBA
+                                </span>
+                            </div>
+                        </div>
 
-                <g opacity="0.95">
-                    <path d="M95 190 C150 120, 240 100, 315 120 C360 132, 385 160, 405 185 C430 220, 425 248, 395 260 C350 277, 275 270, 210 262 C155 255, 110 238, 90 215 C82 205, 84 198, 95 190Z" fill="url(#dotPattern)" />
-                    <path d="M345 175 C380 130, 470 108, 560 122 C650 136, 715 160, 777 205 C820 236, 828 275, 792 300 C745 332, 650 340, 560 332 C490 326, 420 312, 380 280 C342 250, 326 205, 345 175Z" fill="url(#dotPattern)" />
-                    <path d="M530 310 C560 300, 605 304, 635 320 C660 334, 672 358, 662 378 C647 405, 597 413, 560 402 C527 392, 510 360, 517 335 C520 323, 523 315, 530 310Z" fill="url(#dotPattern)" />
-                    <path d="M720 355 C744 344, 785 348, 810 365 C830 378, 835 398, 824 410 C808 428, 774 430, 746 420 C720 411, 706 392, 709 374 C710 366, 714 359, 720 355Z" fill="url(#dotPattern)" />
-                </g>
+                        <div className="rounded-lg border border-amber-400/15 bg-amber-400/10 p-4">
+                            <p className="text-sm text-amber-100/65">Restock alert</p>
+                            <p className="mt-2 text-xl font-black text-amber-200">Milo 1kg</p>
+                            <p className="mt-1 text-sm leading-6 text-cyan-50/50">
+                                Current stock can cover 3.2 days. Suggested reorder: 180 units.
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-                <path d="M180 210 Q260 110 355 210" className="map-arc" />
-                <path d="M470 180 Q560 145 655 260" className="map-arc delay-1" />
-                <path d="M610 260 Q690 120 790 165" className="map-arc delay-2" />
-                <path d="M350 210 Q495 85 680 220" className="map-arc delay-3" />
-
-                <path id="path1" d="M180 210 Q260 110 355 210" fill="none" />
-                <path id="path2" d="M470 180 Q560 145 655 260" fill="none" />
-                <path id="path3" d="M610 260 Q690 120 790 165" fill="none" />
-                <path id="path4" d="M350 210 Q495 85 680 220" fill="none" />
-
-                <circle r="5" className="travel-dot">
-                    <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
-                        <mpath href="#path1" />
-                    </animateMotion>
-                </circle>
-
-                <circle r="5" className="travel-dot">
-                    <animateMotion dur="4.8s" repeatCount="indefinite" rotate="auto">
-                        <mpath href="#path2" />
-                    </animateMotion>
-                </circle>
-
-                <circle r="5" className="travel-dot">
-                    <animateMotion dur="5.5s" repeatCount="indefinite" rotate="auto">
-                        <mpath href="#path3" />
-                    </animateMotion>
-                </circle>
-
-                <circle r="5" className="travel-dot">
-                    <animateMotion dur="6s" repeatCount="indefinite" rotate="auto">
-                        <mpath href="#path4" />
-                    </animateMotion>
-                </circle>
-
-                <g filter="url(#glowCyan)">
-                    <circle cx="180" cy="210" r="4.5" className="map-node" />
-                    <circle cx="355" cy="210" r="4.5" className="map-node" />
-                    <circle cx="470" cy="180" r="4.5" className="map-node" />
-                    <circle cx="655" cy="260" r="4.5" className="map-node" />
-                    <circle cx="610" cy="260" r="4.5" className="map-node" />
-                    <circle cx="790" cy="165" r="4.5" className="map-node" />
-                    <circle cx="680" cy="220" r="4.5" className="map-node" />
-                </g>
-            </svg>
-
-            <div className="panel absolute left-[6%] top-[56%] max-w-[280px] rounded-3xl p-5">
-                <h3 className="text-3xl font-bold tracking-tight text-white">
-                    
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-cyan-50/55">
-                    Point-to-point animated connections from multiple regions into your
-                    intelligent network.
-                </p>
-                <span className="mt-4 inline-block font-semibold text-cyan-300">
-                    Explore Global Coverage
-                </span>
+                <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                    {stockGroups.map(([label, value, color]) => (
+                        <div key={label} className="rounded-lg border border-white/10 bg-white/[0.03] p-4">
+                            <p className="text-xs uppercase tracking-[0.14em] text-cyan-50/35">{label}</p>
+                            <p className={`mt-2 text-2xl font-black ${color}`}>{value}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

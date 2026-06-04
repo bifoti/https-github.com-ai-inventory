@@ -3,7 +3,6 @@ import profile from "../assets/profile.jpeg";
 
 // ── Typewriter Hook ──────────────────────────────────────────────────────────
 function useTypewriter(words, speed = 100, pause = 1800) {
-  const [displayed, setDisplayed] = useState("");
   const [wordIdx, setWordIdx] = useState(0);
   const [charIdx, setCharIdx] = useState(0);
   const [deleting, setDeleting] = useState(false);
@@ -18,14 +17,15 @@ function useTypewriter(words, speed = 100, pause = 1800) {
     } else if (deleting && charIdx > 0) {
       timeout = setTimeout(() => setCharIdx((c) => c - 1), speed / 2);
     } else if (deleting && charIdx === 0) {
-      setDeleting(false);
-      setWordIdx((i) => (i + 1) % words.length);
+      timeout = setTimeout(() => {
+        setDeleting(false);
+        setWordIdx((i) => (i + 1) % words.length);
+      }, speed / 2);
     }
-    setDisplayed(current.slice(0, charIdx));
     return () => clearTimeout(timeout);
   }, [charIdx, deleting, wordIdx, words, speed, pause]);
 
-  return displayed;
+  return words[wordIdx].slice(0, charIdx);
 }
 
 // ── Counter Hook ─────────────────────────────────────────────────────────────
@@ -115,6 +115,19 @@ const LOGOS = [
   { name: "GitHub", color: "#f0f0f0", symbol: "🐙" },
 ];
 
+const LOGO_SOURCES = {
+  Python: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg",
+  React: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg",
+  Scikit: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg",
+  Pandas: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original-wordmark.svg",
+  TensorFlow: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original-wordmark.svg",
+  SQL: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg",
+  Vite: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg",
+  XGBoost: "https://static.cdnlogo.com/logos/x/25/xgboost.svg",
+  Jupyter: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original-wordmark.svg",
+  GitHub: "https://cdn.simpleicons.org/github/FFFFFF",
+};
+
 function LogoCarousel() {
   // Duplicate for seamless loop
   const items = [...LOGOS, ...LOGOS];
@@ -126,8 +139,7 @@ function LogoCarousel() {
         <div className="carousel-inner">
           {items.map((logo, i) => (
             <div className="logo-pill" key={i}>
-              <span className="logo-symbol">{logo.symbol}</span>
-              <span className="logo-name" style={{ color: logo.color }}>{logo.name}</span>
+              <img src={LOGO_SOURCES[logo.name]} alt={`${logo.name} logo`} />
             </div>
           ))}
         </div>
@@ -725,9 +737,9 @@ export default function About() {
         }
         .carousel-inner {
           display: flex;
-          gap: 1rem;
+          gap: 3.5rem;
           width: max-content;
-          animation: marquee 28s linear infinite;
+          animation: marquee 24s linear infinite;
         }
         .carousel-inner:hover {
           animation-play-state: paused;
@@ -737,28 +749,28 @@ export default function About() {
           100% { transform: translateX(-50%); }
         }
         .logo-pill {
-          display: flex;
-          align-items: center;
-          gap: 0.6rem;
-          background: var(--surface);
-          border: 1px solid var(--border);
-          border-radius: 99px;
-          padding: 0.6rem 1.4rem;
-          white-space: nowrap;
-          transition: border-color 0.3s, transform 0.3s;
+          display: grid;
+          place-items: center;
+          width: 8.5rem;
+          height: 4rem;
+          flex: 0 0 auto;
+          padding: 0;
+          opacity: 0.9;
+          transition: opacity 0.3s, transform 0.3s, filter 0.3s;
           cursor: default;
         }
         .logo-pill:hover {
-          border-color: rgba(255,255,255,0.18);
+          opacity: 1;
           transform: translateY(-2px);
-          background: var(--surface2);
+          filter: drop-shadow(0 0 16px rgba(56,189,248,0.14));
         }
-        .logo-symbol { font-size: 1.1rem; }
-        .logo-name {
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 0.82rem;
-          font-weight: 500;
-          letter-spacing: 0.04em;
+        .logo-pill img {
+          width: 100%;
+          max-width: 8.5rem;
+          height: 3rem;
+          object-fit: contain;
+          display: block;
+          filter: saturate(0.85) contrast(1.08);
         }
 
         /* ── Floating bottom bar with logo carousel ── */
@@ -982,7 +994,7 @@ export default function About() {
               <div className="avatar-status" title="Available" />
             </div>
             <p style={{ fontSize: "0.72rem", color: "var(--muted)", fontFamily: "'JetBrains Mono', monospace", textAlign: "center" }}>
-              * Replace the emoji above<br />with your photo
+              <br />
             </p>
           </div>
 
@@ -994,7 +1006,7 @@ export default function About() {
             <div className="me-info-row">
               <div className="me-info-item">
                 <span>🎓</span>
-                <span>Bachelor's Degree in Computer Science — Your University</span>
+                <span>Bachelor's Degree in Information Technology — University Teknologi Mara</span>
               </div>
               <div className="me-info-item">
                 <span>📍</span>
@@ -1002,11 +1014,11 @@ export default function About() {
               </div>
               <div className="me-info-item">
                 <span>📧</span>
-                <span>email@example.com</span>
+                <span>2024271478@uitm.edu.my</span>
               </div>
               <div className="me-info-item">
                 <span>💼</span>
-                <span>Internship / Freelance — Open to opportunities</span>
+                <span>Final Year Project</span>
               </div>
             </div>
 
@@ -1014,7 +1026,7 @@ export default function About() {
               I am a student who is passionate about Data Science and Artificial Intelligence.
               This project was built as part of my study of modern data analysis techniques,
               especially Market Basket Analysis and Machine Learning prediction. I believe data
-              has a story waiting to be told — and my task is to discover that story.
+              has a story waiting to be told  and my task is to discover that story.
             </p>
 
             <div className="me-skills">
