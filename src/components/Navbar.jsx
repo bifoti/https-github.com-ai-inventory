@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const analyticsUrl = "http://150.109.93.27:8501/";
-
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
 
@@ -43,15 +41,15 @@ export default function Navbar() {
                 </div>
 
                 <nav className="hidden items-center gap-5 md:flex">
-                    <a href="#features" className="text-cyan-50/65 hover:text-cyan-200">
+                    <a href="/#features" className="text-cyan-50/65 hover:text-cyan-200">
                         Features
                     </a>
-                    <a href="#overview" className="text-cyan-50/65 hover:text-cyan-200">
+                    <a href="/#overview" className="text-cyan-50/65 hover:text-cyan-200">
                         Overview
                     </a>
-                    <a href={analyticsUrl} className="text-cyan-300 hover:text-cyan-200">
-                        View Analytics
-                    </a>
+                    <Link to="/dashboard" className="text-cyan-300 hover:text-cyan-200">
+                        Dashboard
+                    </Link>
                     <Link
                         to="/about"
                         className="rounded-lg border border-cyan-400/25 px-3 py-1.5 text-cyan-200 hover:bg-cyan-400/5"

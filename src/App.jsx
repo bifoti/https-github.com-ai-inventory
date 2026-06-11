@@ -7,6 +7,7 @@ import OverviewStats from "./components/OverviewStats";
 import Footer from "./components/Footer";
 
 import About from "./pages/About.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
 function HomePage() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/about" element={<About />} />
     </Routes>
   );

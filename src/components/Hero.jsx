@@ -25,18 +25,18 @@ export default function Hero() {
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-4">
-                    <a
-                        href={analyticsUrl}
+                    <Link
+                        to="/dashboard"
                         className="rounded-lg bg-gradient-to-r from-cyan-300 to-emerald-300 px-6 py-4 font-semibold text-slate-950 shadow-[0_0_30px_rgba(45,212,191,0.24)] transition hover:translate-y-[-1px]"
                     >
-                        Open Analytics
-                    </a>
+                        Open Dashboard
+                    </Link>
 
                     <a
-                        href="#features"
+                        href={analyticsUrl}
                         className="rounded-lg border border-cyan-400/20 bg-[#071523]/70 px-6 py-4 text-cyan-100 transition hover:border-cyan-300/40 hover:bg-cyan-400/5"
                     >
-                        View Features
+                        View Analytics
                     </a>
 
                     <Link
