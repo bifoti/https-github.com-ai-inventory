@@ -1,10 +1,10 @@
 import Navbar from "../components/Navbar";
 
 const powerBiReportUrl =
-  "https://app.powerbi.com/groups/me/reports/eebed58b-d065-40c2-8736-fca52c988bc3/3ab9fcb360a4c5c9952e?experience=power-bi";
+  "https://app.powerbi.com/view?r=eyJrIjoiZDc0OTAzYjMtZTlhNS00YThlLWE4MDktMjczYzAzMmU4MWUxIiwidCI6ImNkY2JiMGUyLTlmZWEtNGY1NC04NjcwLTY3MjcwNzc5N2FkYSIsImMiOjEwfQ%3D%3D";
 
 const defaultPowerBiEmbedUrl =
-  "https://app.powerbi.com/reportEmbed?reportId=eebed58b-d065-40c2-8736-fca52c988bc3&autoAuth=true";
+  "https://app.powerbi.com/view?r=eyJrIjoiZDc0OTAzYjMtZTlhNS00YThlLWE4MDktMjczYzAzMmU4MWUxIiwidCI6ImNkY2JiMGUyLTlmZWEtNGY1NC04NjcwLTY3MjcwNzc5N2FkYSIsImMiOjEwfQ%3D%3D";
 
 const rawPowerBiEmbedUrl =
   import.meta.env.VITE_POWER_BI_EMBED_URL?.trim() || defaultPowerBiEmbedUrl;
