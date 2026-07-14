@@ -33,7 +33,7 @@ export default function Hero() {
                     </Link>
 
                     <a
-                        href={analyticsUrl}
+                        to="/prediction/app.py"
                         className="rounded-lg border border-cyan-400/20 bg-[#071523]/70 px-6 py-4 text-cyan-100 transition hover:border-cyan-300/40 hover:bg-cyan-400/5"
                     >
                         View Analytics
