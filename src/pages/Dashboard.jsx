@@ -1,10 +1,7 @@
 import Navbar from "../components/Navbar";
 
-const powerBiReportUrl =
-  "https://app.powerbi.com/view?r=eyJrIjoiZDc0OTAzYjMtZTlhNS00YThlLWE4MDktMjczYzAzMmU4MWUxIiwidCI6ImNkY2JiMGUyLTlmZWEtNGY1NC04NjcwLTY3MjcwNzc5N2FkYSIsImMiOjEwfQ%3D%3D";
-
 const defaultPowerBiEmbedUrl =
-  "https://app.powerbi.com/view?r=eyJrIjoiZDc0OTAzYjMtZTlhNS00YThlLWE4MDktMjczYzAzMmU4MWUxIiwidCI6ImNkY2JiMGUyLTlmZWEtNGY1NC04NjcwLTY3MjcwNzc5N2FkYSIsImMiOjEwfQ%3D%3D";
+  "https://app.powerbi.com/view?r=eyJrIjoiNzJjMzcyOTAtNTZiNi00N2E5LWFjYjQtYjRiNjQxNTA5NDE5IiwidCI6ImNkY2JiMGUyLTlmZWEtNGY1NC04NjcwLTY3MjcwNzc5N2FkYSIsImMiOjEwfQ%3D%3D&pageName=0c28f4521a6002c5b225";
 
 const rawPowerBiEmbedUrl =
   import.meta.env.VITE_POWER_BI_EMBED_URL?.trim() || defaultPowerBiEmbedUrl;
@@ -18,13 +15,18 @@ function withPowerBiDisplayParams(url) {
 
   try {
     const embedUrl = new URL(url);
+
     Object.entries(displayParams).forEach(([key, value]) => {
       embedUrl.searchParams.set(key, value);
     });
+
     return embedUrl.toString();
   } catch {
     const separator = url.includes("?") ? "&" : "?";
-    return `${url}${separator}${new URLSearchParams(displayParams).toString()}`;
+
+    return `${url}${separator}${new URLSearchParams(
+      displayParams
+    ).toString()}`;
   }
 }
 
@@ -42,13 +44,14 @@ export default function Dashboard() {
               <p className="text-[11px] uppercase tracking-[0.18em] text-cyan-200/60">
                 Power BI
               </p>
+
               <h1 className="text-lg font-semibold text-white">
                 Interactive Dashboard
               </h1>
             </div>
 
             <a
-              href={powerBiReportUrl}
+              href={defaultPowerBiEmbedUrl}
               target="_blank"
               rel="noreferrer"
               className="rounded-lg border border-cyan-400/25 px-4 py-2 text-sm font-semibold text-cyan-100 transition hover:bg-cyan-400/10"
@@ -59,29 +62,12 @@ export default function Dashboard() {
 
           <div className="bg-black p-2 md:p-3">
             <div className="aspect-[16/9] w-full overflow-hidden rounded-md border border-white/10 bg-black shadow-[inset_0_0_0_1px_rgba(255,255,255,0.03)]">
-              {powerBiEmbedUrl ? (
-                <iframe
-                  title="Power BI Dashboard"
-                  src={powerBiEmbedUrl}
-                  className="h-full w-full border-0 bg-black"
-                  allowFullScreen
-                />
-              ) : (
-                <div className="flex h-full items-center justify-center px-4">
-                  <div className="panel max-w-2xl rounded-lg p-6 text-center">
-                    <p className="text-sm uppercase tracking-[0.18em] text-cyan-200/70">
-                      Dashboard
-                    </p>
-                    <h1 className="mt-3 text-2xl font-semibold text-white">
-                      Power BI embed URL belum diset
-                    </h1>
-                    <p className="mt-3 leading-7 text-cyan-50/60">
-                      Publish report dalam Power BI Service, copy iframe `src`,
-                      kemudian letak sebagai `VITE_POWER_BI_EMBED_URL`.
-                    </p>
-                  </div>
-                </div>
-              )}
+              <iframe
+                title="Ayam Serayu Power BI Dashboard"
+                src={powerBiEmbedUrl}
+                className="h-full w-full border-0 bg-black"
+                allowFullScreen
+              />
             </div>
           </div>
         </section>
