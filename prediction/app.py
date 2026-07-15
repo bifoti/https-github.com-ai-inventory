@@ -1757,10 +1757,7 @@ if page == "Model Performance":
         worst_days[col] = worst_days[col].apply(format_myr)
     st.dataframe(worst_days, width="stretch")
 
-    st.info(
-        "Use this page during viva to defend the model with replay metrics. "
-        "For final report, mention that a true holdout split is stronger if the model is retrained."
-    )
+  
 
 
 # =========================
