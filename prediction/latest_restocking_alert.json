@@ -1,0 +1,93 @@
+{
+    "company": "Not Registered",
+    "simulated_today": "2026-06-01",
+    "forecast_month": 6,
+    "forecast_year": 2026,
+    "seasonal_event": "Normal Demand",
+    "seasonal_confidence": 70,
+    "suggested_restock_date": "2026-06-06",
+    "recommendations": [
+        {
+            "Ingredient": "Chicken (kg)",
+            "Current Stock": 80.0,
+            "AI Predicted Monthly Demand": 1998.88,
+            "Recommended Restock Quantity": 1918.88,
+            "Priority": "HIGH"
+        },
+        {
+            "Ingredient": "Rice (kg)",
+            "Current Stock": 50.0,
+            "AI Predicted Monthly Demand": 549.23,
+            "Recommended Restock Quantity": 499.23,
+            "Priority": "HIGH"
+        },
+        {
+            "Ingredient": "Drink (units)",
+            "Current Stock": 150.0,
+            "AI Predicted Monthly Demand": 7695.71,
+            "Recommended Restock Quantity": 7545.71,
+            "Priority": "HIGH"
+        },
+        {
+            "Ingredient": "Chili (kg)",
+            "Current Stock": 20.0,
+            "AI Predicted Monthly Demand": 136.29,
+            "Recommended Restock Quantity": 116.29,
+            "Priority": "HIGH"
+        },
+        {
+            "Ingredient": "Oil (liter)",
+            "Current Stock": 30.0,
+            "AI Predicted Monthly Demand": 181.72,
+            "Recommended Restock Quantity": 151.72,
+            "Priority": "HIGH"
+        },
+        {
+            "Ingredient": "Egg (units)",
+            "Current Stock": 200.0,
+            "AI Predicted Monthly Demand": 0.0,
+            "Recommended Restock Quantity": 0,
+            "Priority": "SUFFICIENT"
+        }
+    ],
+    "auto_alert_enabled": false,
+    "auto_alert_threshold": "MEDIUM and HIGH",
+    "auto_alert_triggered_items": [
+        {
+            "Ingredient": "Drink (units)",
+            "Current Stock": 150.0,
+            "AI Predicted Monthly Demand": 7695.71,
+            "Recommended Restock Quantity": 7545.71,
+            "Priority": "HIGH"
+        },
+        {
+            "Ingredient": "Chicken (kg)",
+            "Current Stock": 80.0,
+            "AI Predicted Monthly Demand": 1998.88,
+            "Recommended Restock Quantity": 1918.88,
+            "Priority": "HIGH"
+        },
+        {
+            "Ingredient": "Rice (kg)",
+            "Current Stock": 50.0,
+            "AI Predicted Monthly Demand": 549.23,
+            "Recommended Restock Quantity": 499.23,
+            "Priority": "HIGH"
+        },
+        {
+            "Ingredient": "Oil (liter)",
+            "Current Stock": 30.0,
+            "AI Predicted Monthly Demand": 181.72,
+            "Recommended Restock Quantity": 151.72,
+            "Priority": "HIGH"
+        },
+        {
+            "Ingredient": "Chili (kg)",
+            "Current Stock": 20.0,
+            "AI Predicted Monthly Demand": 136.29,
+            "Recommended Restock Quantity": 116.29,
+            "Priority": "HIGH"
+        }
+    ],
+    "main_suggestion": "Restock Drink (units) first because it has the highest shortage risk."
+}
