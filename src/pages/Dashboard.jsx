@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 
 const defaultPowerBiEmbedUrl =
-  "https://app.powerbi.com/view?r=eyJrIjoiNzJjMzcyOTAtNTZiNi00N2E5LWFjYjQtYjRiNjQxNTA5NDE5IiwidCI6ImNkY2JiMGUyLTlmZWEtNGY1NC04NjcwLTY3MjcwNzc5N2FkYSIsImMiOjEwfQ%3D%3D&pageName=0c28f4521a6002c5b225";
+  "https://app.powerbi.com/view?r=eyJrIjoiNzJjMzcyOTAtNTZiNi00N2E5LWFjYjQtYjRiNjQxNTA5NDE5IiwidCI6ImNkY2JiMGUyLTlmZWEtNGY1NC04NjcwLTY3MjcwNzc5N2FkYSIsImMiOjEwfQ%3D%3D";
 
 const rawPowerBiEmbedUrl =
   import.meta.env.VITE_POWER_BI_EMBED_URL?.trim() || defaultPowerBiEmbedUrl;
@@ -51,7 +51,7 @@ export default function Dashboard() {
             </div>
 
             <a
-              href={defaultPowerBiEmbedUrl}
+              href={rawPowerBiEmbedUrl}
               target="_blank"
               rel="noreferrer"
               className="rounded-lg border border-cyan-400/25 px-4 py-2 text-sm font-semibold text-cyan-100 transition hover:bg-cyan-400/10"
